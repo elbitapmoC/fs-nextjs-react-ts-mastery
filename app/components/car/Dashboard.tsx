@@ -1,5 +1,4 @@
 import React from "react";
-// import styles from "./car.module.css";
 
 interface DashboardProps {
   isRunning: boolean;
@@ -16,14 +15,20 @@ const Dashboard = ({
   fuel,
   color,
 }: DashboardProps) => {
+  const colorClassMap: Record<string, string> = {
+    red: "text-red-500",
+    blue: "text-blue-500",
+    green: "text-green-500",
+  };
+
   return (
     <aside className="m-2">
-      <p className={`car ${color}`}>Car</p>
+      <p className={`car ${colorClassMap[color]}`}>Car</p>
       {isRunning ? (
         <>
           <p>Speed: {speed} km/h</p>
           <p>Have driven for {timeOnRoad} seconds</p>
-          <p>Fuel: {fuel.toFixed(2)}%</p>{" "}
+          <p>Fuel: {fuel.toFixed(2)}%</p>
         </>
       ) : fuel <= 0 ? (
         <p>You ran out of gas... ⛽️</p>
@@ -33,5 +38,4 @@ const Dashboard = ({
     </aside>
   );
 };
-
 export default Dashboard;

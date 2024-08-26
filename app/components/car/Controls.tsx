@@ -14,14 +14,13 @@ const Controls = () => {
     speed,
   } = useCarContext();
 
-  const buttonClass =
-    "focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 m-2";
+  const buttonClass = "rounded-lg px-5 py-2.5 m-2";
 
   const handleRunning = () => setIsRunning(!isRunning);
 
   const handleChangeColor = () => {
-    const current = color === "blue" ? "green" : "blue";
-    setColor(current); // Now correctly toggles between blue and green
+    const current = color == "blue" ? "green" : "blue";
+    setColor(current); // Correctly toggles between blue and green
   };
 
   const handleHonk = () => alert("🪿 Hooonk!");
