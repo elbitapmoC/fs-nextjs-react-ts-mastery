@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 
 interface DashboardProps {
   isRunning: boolean;
@@ -21,6 +21,10 @@ const Dashboard = ({
     green: "text-green-500",
   };
 
+  const fuelEfficiency = useMemo(() => {
+    return (speed / fuel).toFixed(2);
+  }, [speed, fuel]);
+
   return (
     <aside className="m-2">
       <p className={`car ${colorClassMap[color]}`}>Car</p>
@@ -29,6 +33,7 @@ const Dashboard = ({
           <p>Speed: {speed} km/h</p>
           <p>Have driven for {timeOnRoad} seconds</p>
           <p>Fuel: {fuel.toFixed(2)}%</p>
+          <p>Fuel Efficiency: {fuelEfficiency} km/l</p>
         </>
       ) : fuel <= 0 ? (
         <p>You ran out of gas... ⛽️</p>
@@ -38,4 +43,5 @@ const Dashboard = ({
     </aside>
   );
 };
+
 export default Dashboard;

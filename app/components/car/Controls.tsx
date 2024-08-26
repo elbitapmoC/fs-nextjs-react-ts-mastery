@@ -1,53 +1,47 @@
-import React from "react";
+import React, { useCallback } from "react";
 import SpeedControl from "./SpeedControl";
 import { useCarContext } from "../context/CarContext";
 
 const Controls = () => {
-  const {
-    isRunning,
-    fuel,
-    setIsRunning,
-    color,
-    setColor,
-    setSpeed,
-    setFuelConsumptionRate,
-    speed,
-  } = useCarContext();
+  const { state, dispatch } = useCarContext();
+  const { isRunning, fuel, color, speed } = state;
 
   const buttonClass = "rounded-lg px-5 py-2.5 m-2";
 
-  const handleRunning = () => setIsRunning(!isRunning);
-
-  const handleChangeColor = () => {
-    const current = color == "blue" ? "green" : "blue";
-    setColor(current); // Correctly toggles between blue and green
+  const handleRunning = () => {
+    dispatch({ type: "TOGGLE_RUNNING" });
   };
+
+  const handleChangeColor = useCallback(() => {
+    const current = color === "blue" ? "green" : "blue";
+    dispatch({ type: "CHANGE_COLOR", payload: current });
+  }, [color, dispatch]);
 
   const handleHonk = () => alert("🪿 Hooonk!");
 
-  const handleSpeedUp = () => {
-    if (fuel > 0 && speed < 120) {
+  const handleSpeedUp = useCallback(() => {
+    if (speed < 120) {
       const newSpeed = speed + 5;
-
-      // Adjust fuel consumption rate based on speed
       const newFuelConsumptionRate =
         newSpeed >= 120 ? 0.15 : newSpeed >= 60 ? 0.1 : 0.05;
-
-      setFuelConsumptionRate(newFuelConsumptionRate);
-      setSpeed(newSpeed);
+      dispatch({ type: "UPDATE_SPEED", payload: newSpeed });
+      dispatch({
+        type: "ADJUST_FUEL_CONSUMPTION_RATE",
+        payload: newFuelConsumptionRate,
+      });
     }
-  };
+  }, [speed, dispatch]);
 
-  const handleSlowDown = () => {
-    const newSpeed = Math.max(speed - 5, 5);
-
-    // Adjust fuel consumption rate based on speed
+  const handleSlowDown = useCallback(() => {
+    const newSpeed = Math.max(speed - 5, 1); // Ensure speed does not drop below 1
     const newFuelConsumptionRate =
       newSpeed >= 120 ? 0.15 : newSpeed >= 60 ? 0.1 : 0.05;
-
-    setFuelConsumptionRate(newFuelConsumptionRate);
-    setSpeed(newSpeed);
-  };
+    dispatch({ type: "UPDATE_SPEED", payload: newSpeed });
+    dispatch({
+      type: "ADJUST_FUEL_CONSUMPTION_RATE",
+      payload: newFuelConsumptionRate,
+    });
+  }, [speed, dispatch]);
 
   return (
     <aside>

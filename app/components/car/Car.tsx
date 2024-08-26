@@ -10,29 +10,12 @@ import { useCarContext } from "../context/CarContext";
 import useCarTimer from "../hooks/useCarTimer";
 
 const Car = () => {
-  const {
-    isRunning,
-    fuel,
-    timeOnRoad,
-    setIsRunning,
-    setFuel,
-    setSpeed,
-    setTimeOnRoad,
-    fuelConsumptionRate,
-    speed,
-    color, // Correctly included color here
-  } = useCarContext();
+  const { state, dispatch } = useCarContext();
+  const { isRunning, fuel, speed, color, fuelConsumptionRate, timeOnRoad } =
+    state;
 
-  useCarTimer(
-    isRunning,
-    fuel,
-    timeOnRoad,
-    fuelConsumptionRate,
-    setIsRunning,
-    setFuel,
-    setSpeed,
-    setTimeOnRoad
-  );
+  // Pass all required arguments
+  useCarTimer(isRunning, fuel, timeOnRoad, fuelConsumptionRate, dispatch);
 
   return (
     <main className="flex flex-col-reverse items-center">
@@ -42,7 +25,7 @@ const Car = () => {
         speed={speed}
         timeOnRoad={timeOnRoad}
         fuel={fuel}
-        color={color} // Passed color prop to Dashboard
+        color={color}
       />
       <FuelWarning fuel={fuel} />
       <SpeedLimitAlert speed={speed} isRunning={isRunning} />
