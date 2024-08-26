@@ -11,17 +11,21 @@ const useCarTimer = (
   useEffect(() => {
     if (!isRunning || fuel <= 0) return;
 
+    console.log("Timer started");
     const timer = setInterval(() => {
-      // Calculate the next state values
       const newTimeOnRoad = timeOnRoad + 1;
       const newFuel = Math.max(fuel - fuelConsumptionRate, 0);
 
-      // Dispatch the actions with the new values
+      console.log(`Time on road: ${newTimeOnRoad}, Fuel: ${newFuel}`);
+
       dispatch({ type: "SET_TIME_ON_ROAD", payload: newTimeOnRoad });
       dispatch({ type: "ADJUST_FUEL", payload: newFuel });
     }, 1000);
 
-    return () => clearInterval(timer);
+    return () => {
+      console.log("Timer stopped");
+      clearInterval(timer);
+    };
   }, [isRunning, fuel, timeOnRoad, fuelConsumptionRate, dispatch]);
 };
 
