@@ -16,7 +16,7 @@ type Action =
   | { type: "CHANGE_COLOR"; payload: string }
   | { type: "UPDATE_SPEED"; payload: number }
   | { type: "ADJUST_FUEL"; payload: number }
-  | { type: "TOGGLE_RUNNING" }
+  | { type: "TOGGLE_RUNNING"; payload: boolean }
   | { type: "SET_TIME_ON_ROAD"; payload: number }
   | { type: "ADJUST_FUEL_CONSUMPTION_RATE"; payload: number };
 
