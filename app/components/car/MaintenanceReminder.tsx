@@ -1,8 +1,15 @@
 import React from "react";
 
-const MaintenanceReminder = ({ timeOnRoad }: { timeOnRoad: number }) => {
+const MaintenanceReminder = ({
+  timeOnRoad,
+  isRunning,
+}: {
+  timeOnRoad: number;
+  isRunning: boolean;
+}) => {
   return (
-    timeOnRoad > 150 && (
+    timeOnRoad > 350 &&
+    isRunning && (
       <p className="text-blue-500">Reminder: Time for maintenance! 🛠️</p>
     )
   );

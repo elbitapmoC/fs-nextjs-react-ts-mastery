@@ -45,8 +45,8 @@ const Car = () => {
         color={color} // Passed color prop to Dashboard
       />
       <FuelWarning fuel={fuel} />
-      <SpeedLimitAlert speed={speed} />
-      <MaintenanceReminder timeOnRoad={timeOnRoad} />
+      <SpeedLimitAlert speed={speed} isRunning={isRunning} />
+      <MaintenanceReminder timeOnRoad={timeOnRoad} isRunning={isRunning} />
     </main>
   );
 };
