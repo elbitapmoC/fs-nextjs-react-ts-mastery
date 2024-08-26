@@ -31,7 +31,7 @@ const SpeedControl = ({
           isDisabled && "opacity-50 cursor-not-allowed"
         }`}
       >
-        Slowwww Down! 🐌
+        Slow Down! 🐌
       </button>
     </aside>
   );
