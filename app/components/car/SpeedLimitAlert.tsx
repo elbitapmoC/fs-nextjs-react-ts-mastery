@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const SpeedLimitAlert = ({
   speed,
@@ -8,7 +8,8 @@ const SpeedLimitAlert = ({
   isRunning: boolean;
 }) => {
   return (
-    speed > 100 && <p className="text-yellow-500">Caution: Speeding! 🚓</p>
+    speed > 100 &&
+    isRunning && <p className="text-yellow-500">Caution: Speeding! 🚓</p>
   );
 };
 

@@ -1,7 +1,11 @@
 import React from "react";
 
-const FuelWarning = ({ fuel }: { fuel: number }) => {
-  return fuel < 15 && <p className="text-red-500">Warning: Low Fuel! ⛽️</p>;
+interface FuelWarningProps {
+  fuel: number;
+}
+
+const FuelWarning: React.FC<FuelWarningProps> = ({ fuel }) => {
+  return <div>{fuel < 20 && <p>Warning: Low Fuel!</p>}</div>;
 };
 
 export default FuelWarning;

@@ -1,11 +1,10 @@
-import "@testing-library/jest-dom/extend-expect";
+import { render, screen } from '@testing-library/react';
+import Dashboard from '../../app/components/car/Dashboard';
+import { CarProvider } from '../../app/components/context/CarContext';
+import React from 'react';
 
-import { render, screen } from "@testing-library/react";
-import Dashboard from "../../app/components/car/Dashboard";
-import { CarProvider } from "../../app/components/context/CarContext";
-
-describe("Dashboard Component", () => {
-  it("renders fuel level correctly", () => {
+describe('Dashboard Component', () => {
+  it('renders fuel level correctly', () => {
     render(
       <CarProvider>
         <Dashboard
@@ -15,7 +14,7 @@ describe("Dashboard Component", () => {
           timeOnRoad={30}
           isRunning={false}
         />
-      </CarProvider>
+      </CarProvider>,
     );
 
     expect(screen.getByText(/Fuel Level: 50%/i)).toBeInTheDocument();
