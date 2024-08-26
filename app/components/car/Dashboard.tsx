@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./Car.module.css";
+// import styles from "./car.module.css";
 
 interface DashboardProps {
   isRunning: boolean;
@@ -18,13 +18,12 @@ const Dashboard = ({
 }: DashboardProps) => {
   return (
     <aside className="m-2">
-      <p className={`${styles.car} ${styles[color]}`}>Car</p>
+      <p className={`car ${color}`}>Car</p>
       {isRunning ? (
         <>
           <p>Speed: {speed} km/h</p>
           <p>Have driven for {timeOnRoad} seconds</p>
           <p>Fuel: {fuel.toFixed(2)}%</p>{" "}
-          {/* Display fuel with 2 decimal places */}
         </>
       ) : fuel <= 0 ? (
         <p>You ran out of gas... ⛽️</p>
