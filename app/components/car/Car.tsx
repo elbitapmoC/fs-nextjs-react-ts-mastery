@@ -26,7 +26,7 @@ const Car = () => {
         fuel={fuel}
         color={color}
       />
-      <FuelWarning fuel={fuel} />
+      <FuelWarning fuel={fuel} isRunning={isRunning} />
       <SpeedLimitAlert speed={speed} isRunning={isRunning} />
       <MaintenanceReminder timeOnRoad={timeOnRoad} isRunning={isRunning} />
     </main>
