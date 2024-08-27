@@ -27,7 +27,9 @@ const Dashboard = ({
 
   return (
     <aside className="m-2">
-      <p className={`car ${colorClassMap[color]}`}>Car</p>
+      <p className={`car ${colorClassMap[color]}`} data-testid="car-element">
+        Car
+      </p>
       {isRunning ? (
         <>
           <p>Speed: {speed} km/h</p>

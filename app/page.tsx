@@ -1,7 +1,7 @@
-import { CarProvider } from './components/context/CarContext'; // Ensure this is correct
-import Car from './components/car/Car'; // Ensure the path is correct and case-sensitive
+import { CarProvider } from "./components/context/CarContext"; // Ensure this is correct
+import Car from "./components/car/Car"; // Ensure the path is correct and case-sensitive
 
-import React from 'react';
+import React from "react";
 
 export default function Home() {
   return (

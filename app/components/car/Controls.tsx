@@ -9,7 +9,10 @@ const Controls = () => {
   const buttonClass = "rounded-lg px-5 py-2.5 m-2";
 
   const handleRunning = () => {
-    dispatch({ type: "TOGGLE_RUNNING" });
+    dispatch({
+      type: "TOGGLE_RUNNING",
+      payload: isRunning ? true : false,
+    });
   };
 
   const handleChangeColor = useCallback(() => {

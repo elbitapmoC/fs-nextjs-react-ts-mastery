@@ -14,7 +14,6 @@ const Car = () => {
   const { isRunning, fuel, speed, color, fuelConsumptionRate, timeOnRoad } =
     state;
 
-  // Pass all required arguments
   useCarTimer(isRunning, fuel, timeOnRoad, fuelConsumptionRate, dispatch);
 
   return (
